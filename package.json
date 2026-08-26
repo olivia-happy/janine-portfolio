@@ -1,0 +1,9 @@
+{
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/portfolio.test.mjs",
+    "preview": "node scripts/serve.mjs",
+    "start": "node scripts/serve.mjs"
+  }
+}
