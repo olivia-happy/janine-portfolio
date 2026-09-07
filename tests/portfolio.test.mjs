@@ -4,9 +4,9 @@ import { readFile } from 'node:fs/promises';
 import { portfolio } from '../src/data.js';
 import { renderPortfolio } from '../src/templates.js';
 
-test('portfolio data keeps four technical cases and separate experience records', () => {
-  assert.equal(portfolio.projects.length, 4);
-  assert.equal(portfolio.internships.length, 3);
+test('portfolio data keeps five technical cases and separate work/campus records', () => {
+  assert.equal(portfolio.projects.length, 5);
+  assert.equal(portfolio.internships.length, 4);
   assert.equal(portfolio.campusExperiences.length, 3);
   assert.match(portfolio.profile.name, /袁靓/);
   assert.match(portfolio.profile.englishName, /Janine/);
@@ -38,27 +38,34 @@ test('real profile renders hero identity and animated flower stage', async () =>
   assert.doesNotMatch(shell, /虚构样稿/);
 });
 
-test('portfolio uses an explorable project index with four cases', async () => {
+test('portfolio uses an explorable project index with five cases', async () => {
   const [html, css] = await Promise.all([renderPortfolio(portfolio), readFile('src/styles.css', 'utf8')]);
 
   assert.ok(html.indexOf('id="projects"') < html.indexOf('id="journey"'));
-  assert.equal((html.match(/data-project-index-control/g) || []).length, 4);
+  assert.equal((html.match(/data-project-index-control/g) || []).length, 5);
   assert.match(html, /class="project-index-gallery reveal"/);
   assert.match(html, /class="project-preview-stage"/);
   assert.match(html, /product-ui product-ui--embodied/);
   assert.match(html, /product-ui product-ui--energy/);
+  assert.match(html, /product-ui product-ui--travel/);
   assert.match(css, /\.project-index-gallery/);
   assert.match(css, /\.project-preview-stage/);
 });
 
-test('project index and growth interaction controls remain accessible', async () => {
+test('project index and split growth interaction controls remain accessible', async () => {
   const [html, app] = await Promise.all([renderPortfolio(portfolio), readFile('src/app.js', 'utf8')]);
 
-  assert.equal((html.match(/data-project-index-control/g) || []).length, 4);
+  assert.equal((html.match(/data-project-index-control/g) || []).length, 5);
   assert.match(html, /aria-pressed="true"/);
-  assert.match(html, /id="growth-dossier" aria-live="polite"/);
+  assert.match(html, /id="growth-dossier-work" aria-live="polite"/);
+  assert.match(html, /id="growth-dossier-campus" aria-live="polite"/);
+  assert.match(html, /实际经历/);
+  assert.match(html, /校园经历/);
+  assert.ok(html.indexOf('id="journey-work"') > -1);
+  assert.ok(html.indexOf('id="journey-campus"') > -1);
   assert.match(app, /function initProjectIndex\(\)/);
   assert.match(app, /function initGrowthControls\(\)/);
+  assert.match(app, /querySelectorAll\('\.growth-archive'\)/);
   assert.match(app, /ArrowRight/);
   assert.match(app, /ArrowDown/);
 });
@@ -67,6 +74,7 @@ test('case previews expose code / demo links for published projects', async () =
   const html = renderPortfolio(portfolio);
   assert.match(html, /github\.com\/olivia-happy\/embodiedops/);
   assert.match(html, /github\.com\/olivia-happy\/moba-build-agent/);
+  assert.match(html, /github\.com\/olivia-happy\/visitors/);
   assert.match(html, /class="project-link project-link--code"/);
   assert.ok(html.indexOf('class="project-open"') > -1);
 });
@@ -90,16 +98,16 @@ test('floral motion respects reduced-motion and keyboard focus preferences', asy
   assert.match(css, /@media \(prefers-reduced-motion: reduce\)[\s\S]*?\.flower-petal \{ animation: none; \}/);
 });
 
-test('case reader routes by slug for all four projects', async () => {
+test('case reader routes by slug for all five projects', async () => {
   const [html, app, css] = await Promise.all([
     renderPortfolio(portfolio),
     readFile('src/app.js', 'utf8'),
     readFile('src/styles.css', 'utf8')
   ]);
 
-  assert.equal((html.match(/data-project-open/g) || []).length, 4);
-  assert.equal((html.match(/data-case-reader-project/g) || []).length, 4);
-  for (const slug of ['embodiedops', 'moba-build-agent', 'flashsight', 'atlasiq']) {
+  assert.equal((html.match(/data-project-open/g) || []).length, 5);
+  assert.equal((html.match(/data-case-reader-project/g) || []).length, 5);
+  for (const slug of ['embodiedops', 'moba-build-agent', 'flashsight', 'atlasiq', 'visitors']) {
     assert.match(html, new RegExp(`data-project-open="${slug}"`));
     assert.match(html, new RegExp(`data-case-reader-project="${slug}"`));
   }
@@ -108,6 +116,7 @@ test('case reader routes by slug for all four projects', async () => {
   assert.match(app, /#case=\$\{button\.dataset\.projectOpen\}/);
   assert.match(css, /\.case-reader/);
   assert.match(css, /\.product-ui--energy/);
+  assert.match(css, /\.product-ui--travel/);
 });
 
 test('case reader is data-driven with route-ready long-form sections', async () => {

@@ -7,7 +7,9 @@ export const portfolio = {
     thesis: '用统计学做验证，用产品语言做交付：让 AI 能力可衡量、可信、可落地。',
     introduction: '统计学硕士在读。做过企业知识问答与投研 Agent、风控产品化与数据工具，理解模型评测、RAG 与 Agent 边界，也能把模糊需求推进成可交付的产品。',
     tags: ['统计验证', 'AI 产品', '评测驱动'],
-    contact: 'mgalforever@163.com'
+    contact: 'mgalforever@163.com',
+    website: 'https://olivia-happy.github.io/janine-portfolio/',
+    github: 'https://github.com/olivia-happy'
   },
   projects: [
     {
@@ -50,6 +52,7 @@ export const portfolio = {
           { value: '5/5', label: '阶段判断准确率' },
           { value: '0', label: '真实密钥/数据外泄' }
         ] },
+        { id: 'measure', label: '衡量', type: 'intro', title: '诊断是否真在替人省判断？', body: '上线后看两个核心指标：阶段判断准确率（当前 5/5）与人工审核通过率。前者确认规则层没判错，后者确认 Agent 归纳的候选机制真的被人采纳——两者都达标，才说明诊断闭环在省人力而非增负担。' },
         { id: 'reflection', label: '复盘', type: 'reflection', title: '安全边界本身就是产品能力。', body: '面试与演示中，"AI 不编造结论"比"AI 答得多"更能建立信任。下一步接 robomimic 公开轨迹验证真实数据导入。' }
       ]
     },
@@ -94,6 +97,7 @@ export const portfolio = {
           { value: '13', label: 'Android 测试通过' },
           { value: '3 场景', label: '在线 H5 可交互 Demo' }
         ] },
+        { id: 'measure', label: '衡量', type: 'intro', title: '带证据的推荐是否真被采纳？', body: '若产品上线，核心指标是建议采纳率与局内胜率提升。测试全绿只能证明"能跑"，采纳率才说明玩家是否真按带证据的推荐调整出装——这是从工具到被信任建议的分水岭。' },
         { id: 'reflection', label: '复盘', type: 'reflection', title: 'AI 应用的边界设计要先于功能。', body: '这个项目最被认可的不是"推荐准"，而是"隐私与合规想得清楚"。下一步补真机截图坐标校准与"我方定位"维度。' }
       ]
     },
@@ -137,6 +141,7 @@ export const portfolio = {
           { value: 'PRD+设计', label: '产品/边界/架构文档齐' },
           { value: '已公开', label: 'GitHub 仓库上线' }
         ] },
+        { id: 'measure', label: '衡量', type: 'intro', title: '评分口径是否真的越用越准？', body: '投入真实使用后的核心指标是预警命中率与分析师的误报占比——只有当分析师越来越少把预警标成 false positive，说明反馈回流真正在校准评分，而不是靠模型猜得准。' },
         { id: 'reflection', label: '复盘', type: 'reflection', title: '行业产品的价值在"口径"而非"接口"。', body: '产业预警的核心不是抓取，而是把"多严重、对谁、何时上报"变成可复现、可审计的口径。下一步接真实价格与评测集，量化漏报率与前置时间。' }
       ]
     },
@@ -180,7 +185,52 @@ export const portfolio = {
           { value: 'observed/assumption', label: '证据状态区分' },
           { value: '已公开', label: '准入到简报闭环可跑' }
         ] },
+        { id: 'measure', label: '衡量', type: 'intro', title: '准入判断是否真的建立在证据上？', body: '上线后看两个核心指标：准入结论可回溯到证据的比例，与 blocker 的显式暴露率。两者越高，说明团队在依据证据做决策而非个人经验——这是这类决策工具最该被衡量的价值。' },
         { id: 'reflection', label: '复盘', type: 'reflection', title: '行业调研产品的护城河是"证据口径"。', body: '面试价值在于证明：能把跨频、跨源、带不确定性的行业信息，整理成可推进的产品判断。' }
+      ]
+    },
+    {
+      slug: 'visitors',
+      title: 'Visitors—国内城市 AI 智能行程规划器',
+      visual: { kind: 'travel', label: 'TRIP COMMAND', steps: ['双入口输入', '预约证据解析', '小时级路线', '可控再优化'] },
+      stages: {
+        问题: '旅行攻略信息分散，用户出发前真正纠结的是预约、路线与预算能否执行。',
+        判断: '不做泛旅行助手，聚焦国内城市执行型规划：预约可靠性优先、可执行路线、可控生成。',
+        推进: '用小红书证据前置预约风险，结构化输出结果页，叠加锁定/移除/再优化行程编辑。',
+        结果: '可运行可演示的 V1 已公开上线，含中英双语、明暗主题与展示页。'
+      },
+      metrics: ['已公开上线', '预约风险前置'],
+      github: 'https://github.com/olivia-happy/visitors',
+      caseFile: {
+        scope: '国内城市旅行 · 执行型智能行程规划器',
+        role: '产品定义 / 信息架构 / 交互闭环',
+        decision: '预约提醒只依赖用户提供的小红书证据，AI 不凭空生成预约结论；方案生成后可锁定、移除、再优化，不做一次性答案。',
+        evidence: [
+          { label: 'EVIDENCE / 01', title: '预约风险前置', detail: '输入阶段即解析小红书链接中的预约要求，展示渠道、价格与证据摘录，避免出发才发现约不上。' },
+          { label: 'ROUTE / 02', title: '可执行路线', detail: '结果页以小时级时间轴、地图点位、交通时长与预算拆分承载路线，而非一段长攻略。' },
+          { label: 'CONTROL / 03', title: '可控生成', detail: '用户可锁定必去点、移除不感兴趣点，只对剩余路线重新优化，让 AI 跟着约束调方案。' }
+        ]
+      },
+      caseSections: [
+        { id: 'context', label: '背景', type: 'intro', title: '用户缺的不是"推荐几个景点"，而是出发前能执行的方案。', body: '做攻略往往要同时开小红书、地图、天气与票务；真正决定出行体验的是哪些景点要预约、路线顺不顺、预算够不够、自驾好不好停。' },
+        { id: 'evidence', label: '洞察', type: 'evidence', items: [
+          { kicker: '01 / PAIN', title: '信息分散难合并', detail: '攻略、地图、天气、预算散落在不同工具，用户要自己拼出一份可执行的计划。' },
+          { kicker: '02 / RISK', title: '预约是隐性失败点', detail: '很多免费景点需提前预约，生成器只写"建议提前预约"无法识别具体渠道与证据。' }
+        ] },
+        { id: 'decision', label: '判断', type: 'decision', title: '把"预约风险"当作一等规划对象，而不是攻略里的脚注。', body: '聚焦国内城市执行型规划：预约证据前置到输入阶段，结果页按小时级行动组织，方案交给用户继续约束调整。' },
+        { id: 'solution', label: '方案', type: 'steps', items: [
+          { title: '预约证据解析', detail: '用户粘贴小红书链接，系统解析哪些景点需预约、渠道、价格与证据摘录，输入阶段即预览。' },
+          { title: '小时级执行路线', detail: '结果页统一呈现路线摘要、时间轴、地图点位、交通时长与逐项理由。' },
+          { title: '预算与准备清单', detail: '门票/餐饮/住宿/交通分区估算，叠加天气、证件、穿搭等行前清单与停车建议。' },
+          { title: '可控再优化', detail: '锁定必去点、移除不想去的点，系统只对剩余路线重新规划。' }
+        ] },
+        { id: 'result', label: '结果', type: 'metrics', items: [
+          { value: '全链路闭环', label: '需求→方案→展示→分享' },
+          { value: '双入口', label: '快速规划 / 证据优先' },
+          { value: '中英双语言', label: '页面可切换、主题明暗' }
+        ] },
+        { id: 'measure', label: '衡量', type: 'intro', title: '方案是否真的可执行、提醒是否真的有用？', body: '上线后看两个核心指标：方案可执行率与预约提示的命中/纠错比。前者衡量结果页是否真的能被照着走，后者衡量预约提醒是否准确——若用户照做后没再踩"约不上"，就说明证据优先的路径成立。' },
+        { id: 'reflection', label: '复盘', type: 'reflection', title: 'AI 生成的价值在"能否执行"，而不是"答得多快"。', body: 'V1 的取舍是不追求预约渠道全覆盖，先验证证据优先 + 结构化输出 + 可控编辑的路径。下一步接入真实路线距离与官方预约窗口，把前端优化演示升级为可解释后端优化器。' }
       ]
     }
   ],
@@ -191,6 +241,7 @@ export const portfolio = {
     { title: '协同推进', detail: '把业务语言转译成产品与评测口径，让研发、业务、测试讲同一套话。' }
   ],
   internships: [
+    { period: '2026', title: '心动网络（XD.com） · AI 产品实习生', detail: '主导 MIVO Web 视频/音频/图像/3D 四模态 6 款模型接入，交付 6 份 PRD 与高保真原型，沉淀"官方事实与待确认项分离"的接入规范；从 0 定义计费规则配置与用量核算引擎，推动空账期数据口径矛盾闭环；独立交付 OA 审批外部人员管理产品与 469 条历史数据回录；自研飞书知识库 Git 镜像工具并稳定同步 299 篇文档。', focus: '模型接入产品化 · B 端 0→1 交付', handoff: '把"官方事实与待确认项分离"与核算口径意识带进后续每个项目。' },
     { period: '2025', title: '法雷奥（Valeo） · AI 数据产品经理', detail: '搭建基于 Wind Agent + Gemini 的投研自动化工流；RAG 降幻觉、Prompt 迭代 20+ 版，单份研报周期缩短 60%。', focus: 'AIGC 工作流与 RAG 评测', handoff: '把评测集与成本账带进 AI 产品方法。' },
     { period: '2024', title: '特赞（Tezign） · AI 产品经理', detail: '风控模块产品定义与商业化路线图；6 款头部竞品矩阵 + 技术成熟度评估，A/B 测试与交叉验证优化风控规则。', focus: '产品定义与 A/B 验证', handoff: '把"调研-实验-迭代"做成可复用流程。' },
     { period: '2021', title: '中国平安 · 数据产品经理', detail: '内部工具产品化，覆盖 120+ 员工；VOC 洞察落地 3 项策略，核心团队单月转化率提升 15%。', focus: '数据工具与业务赋能', handoff: '用数据口径驱动业务决策。' }

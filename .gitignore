@@ -5,3 +5,6 @@ Thumbs.db
 
 # local bundle (keep source repo lean)
 *.zip
+
+# design reference checkout (AGPL, not published with this site)
+/Shiro/

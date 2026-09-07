@@ -8,6 +8,32 @@ const navigation = document.querySelector('#site-nav');
 document.body.classList.add('js-enabled');
 app.innerHTML = renderPortfolio(portfolio);
 
+function initThemeToggle() {
+  const toggle = document.querySelector('.theme-toggle');
+  const root = document.documentElement;
+  if (!toggle) return;
+
+  const apply = (theme) => {
+    const update = () => { root.dataset.theme = theme; };
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!reduceMotion && document.startViewTransition) document.startViewTransition(update);
+    else update();
+    localStorage.setItem('janine-theme', theme);
+  };
+
+  toggle.addEventListener('click', () => {
+    apply(root.dataset.theme === 'dark' ? 'light' : 'dark');
+  });
+
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (event) => {
+    if (!localStorage.getItem('janine-theme')) {
+      root.dataset.theme = event.matches ? 'dark' : 'light';
+    }
+  });
+}
+
+initThemeToggle();
+
 function initFlowerBloom() {
   const bloom = document.querySelector('.flower-bloom');
   const flowerStage = document.querySelector('[data-flower-stage]');
@@ -151,44 +177,45 @@ function initCaseReaderRouter() {
 initCaseReaderRouter();
 
 function initGrowthControls() {
-  const archive = document.querySelector('.growth-archive');
-  if (!archive) return;
+  const archives = [...document.querySelectorAll('.growth-archive')];
+  if (!archives.length) return;
+  archives.forEach((archive) => {
+    const controls = [...archive.querySelectorAll('.growth-control')];
+    const meta = archive.querySelector('[data-growth-dossier-meta]');
+    const title = archive.querySelector('[data-growth-dossier-title]');
+    const detail = archive.querySelector('[data-growth-dossier-detail]');
+    const focus = archive.querySelector('[data-growth-dossier-focus]');
+    const handoff = archive.querySelector('[data-growth-dossier-handoff]');
+    if (!controls.length || !meta || !title || !detail || !focus || !handoff) return;
 
-  const controls = [...archive.querySelectorAll('.growth-control')];
-  const meta = archive.querySelector('[data-growth-dossier-meta]');
-  const title = archive.querySelector('[data-growth-dossier-title]');
-  const detail = archive.querySelector('[data-growth-dossier-detail]');
-  const focus = archive.querySelector('[data-growth-dossier-focus]');
-  const handoff = archive.querySelector('[data-growth-dossier-handoff]');
-  if (!controls.length || !meta || !title || !detail || !focus || !handoff) return;
+    function activateGrowth(index) {
+      const control = controls[index];
+      if (!control) return;
+      controls.forEach((candidate, candidateIndex) => {
+        const isActive = candidateIndex === index;
+        candidate.setAttribute('aria-pressed', String(isActive));
+        candidate.closest('.growth-item')?.classList.toggle('is-active', isActive);
+      });
+      meta.textContent = `${control.dataset.growthPeriod} / ${control.dataset.growthType}`;
+      title.textContent = control.dataset.growthTitle;
+      detail.textContent = control.dataset.growthDetail;
+      focus.textContent = control.dataset.growthFocus;
+      handoff.textContent = control.dataset.growthHandoff;
+    }
 
-  function activateGrowth(index) {
-    const control = controls[index];
-    if (!control) return;
-    controls.forEach((candidate, candidateIndex) => {
-      const isActive = candidateIndex === index;
-      candidate.setAttribute('aria-pressed', String(isActive));
-      candidate.closest('.growth-item')?.classList.toggle('is-active', isActive);
-    });
-    meta.textContent = `${control.dataset.growthPeriod} / ${control.dataset.growthType}`;
-    title.textContent = control.dataset.growthTitle;
-    detail.textContent = control.dataset.growthDetail;
-    focus.textContent = control.dataset.growthFocus;
-    handoff.textContent = control.dataset.growthHandoff;
-  }
-
-  controls.forEach((control, index) => {
-    control.addEventListener('click', () => activateGrowth(index));
-    control.addEventListener('keydown', (event) => {
-      const direction = event.key === 'ArrowDown' || event.key === 'ArrowRight' ? 1
-        : event.key === 'ArrowUp' || event.key === 'ArrowLeft' ? -1 : 0;
-      const nextIndex = event.key === 'Home' ? 0
-        : event.key === 'End' ? controls.length - 1
-          : direction ? (index + direction + controls.length) % controls.length : null;
-      if (nextIndex === null) return;
-      event.preventDefault();
-      activateGrowth(nextIndex);
-      controls[nextIndex].focus();
+    controls.forEach((control, index) => {
+      control.addEventListener('click', () => activateGrowth(index));
+      control.addEventListener('keydown', (event) => {
+        const direction = event.key === 'ArrowDown' || event.key === 'ArrowRight' ? 1
+          : event.key === 'ArrowUp' || event.key === 'ArrowLeft' ? -1 : 0;
+        const nextIndex = event.key === 'Home' ? 0
+          : event.key === 'End' ? controls.length - 1
+            : direction ? (index + direction + controls.length) % controls.length : null;
+        if (nextIndex === null) return;
+        event.preventDefault();
+        activateGrowth(nextIndex);
+        controls[nextIndex].focus();
+      });
     });
   });
 }
@@ -196,17 +223,20 @@ function initGrowthControls() {
 initGrowthControls();
 
 function initGrowthProgress() {
-  const archive = document.querySelector('.growth-archive');
-  const progress = archive?.querySelector('.growth-progress');
-  if (!archive || !progress) return;
+  const archives = [...document.querySelectorAll('.growth-archive')];
+  if (!archives.length) return;
 
   let frameId = null;
   const update = () => {
     frameId = null;
-    const bounds = archive.getBoundingClientRect();
-    const viewport = window.innerHeight || document.documentElement.clientHeight;
-    const ratio = Math.min(1, Math.max(0, (viewport * .72 - bounds.top) / Math.max(1, bounds.height)));
-    progress.style.setProperty('--growth-progress', `${ratio * 100}%`);
+    archives.forEach((archive) => {
+      const progress = archive.querySelector('.growth-progress');
+      if (!progress) return;
+      const bounds = archive.getBoundingClientRect();
+      const viewport = window.innerHeight || document.documentElement.clientHeight;
+      const ratio = Math.min(1, Math.max(0, (viewport * .72 - bounds.top) / Math.max(1, bounds.height)));
+      progress.style.setProperty('--growth-progress', `${ratio * 100}%`);
+    });
   };
   const schedule = () => {
     if (frameId === null) frameId = window.requestAnimationFrame(update);
