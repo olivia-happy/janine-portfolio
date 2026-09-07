@@ -71,12 +71,12 @@ function renderFlowerPetals() {
   }).join('');
 }
 
-export function renderPortfolio({ notice, profile, projects, principles, internships, campusExperiences }) {
+export function renderPortfolio({ profile, projects, principles, internships, campusExperiences }) {
   const tags = profile.tags.map((tag) => `<li>${escapeHtml(tag)}</li>`).join('');
   const workArchive = renderGrowthArchive(internships, '实际经历', 'growth-dossier-work');
   const campusArchive = renderGrowthArchive(campusExperiences, '校园经历', 'growth-dossier-campus');
   const principleItems = principles.map(({ title, detail }) => `<li><strong>${escapeHtml(title)}</strong><p>${escapeHtml(detail)}</p></li>`).join('');
-  return `<main id="content" data-portfolio-home><div class="pointer-light" aria-hidden="true"></div><p class="sample-notice">${escapeHtml(notice)}</p>
+  return `<main id="content" data-portfolio-home><div class="pointer-light" aria-hidden="true"></div>
     <section id="top" class="hero-docket" aria-labelledby="hero-title"><div class="hero-summary"><p class="eyebrow">AI PRODUCT MANAGER · PORTFOLIO</p><h1 id="hero-title">${escapeHtml(profile.name)}<span>${escapeHtml(profile.englishName)}</span></h1><p class="hero-role">${escapeHtml(profile.role)}</p><p class="hero-statement">${escapeHtml(profile.thesis)}</p><p class="hero-introduction">${escapeHtml(profile.introduction)}</p><ul class="hero-counts"><li>${internships.length} 段实际经历</li><li>${projects.length} 个代表项目</li><li>${campusExperiences.length} 段校园经历</li></ul><a class="hero-link" href="#projects">浏览代表项目 <span aria-hidden="true">→</span></a><div class="hero-proof-strip" aria-label="核心能力"><span>AI 需求洞察</span><span>快速原型验证</span><span>评测体系设计</span><span>跨团队 0→1 落地</span></div></div><aside class="hero-flower-stage" data-flower-stage aria-label="蓝粉银动态花团"><div class="flower-bloom">${renderFlowerPetals()}<b aria-hidden="true"></b></div><div class="flower-caption"><span>2026 / AI PM</span><strong>从洞察到可落地的判断</strong><ul>${tags}</ul></div></aside></section>
     <section class="hero-ai-method" aria-label="AI 产品工作方式"><p>AI PRODUCT PRACTICE</p><strong>问题洞察 <i>→</i> 方案设计 <i>→</i> Demo 验证 <i>→</i> 评测闭环</strong><span>从业务目标而非功能需求出发，把 AI 能力做成可验证、可复用的产品资产。</span></section>
     <section id="projects" class="section projects-section" aria-labelledby="projects-title"><div class="section-heading"><p class="eyebrow">01 / SELECTED CASES</p><h2 id="projects-title">先看我如何把问题推进到结果。</h2></div>${renderProjectIndex(projects)}</section>

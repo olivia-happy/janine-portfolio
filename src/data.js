@@ -1,11 +1,10 @@
 export const portfolio = {
-  notice: 'AI 产品 / 数据产品经理求职主页。项目均可公开核验，简历索取见文末邮箱。',
   profile: {
     name: '袁靓',
     englishName: 'Janine Yuan',
     role: 'AI 产品经理 · Agent 与数据智能方向',
-    thesis: '从业务问题到可上线的 AI 产品：用 Demo 快速验证，用评测体系证明价值。',
-    introduction: '统计学硕士在读：主导过四模态大模型接入、投研 RAG Agent 工作流与知识库工具，习惯用 AI Coding 亲手把想法做成可跑的 Demo——本页 5 个项目全部公开可核验，3 个已上线可体验。',
+    thesis: '把统计学的严谨带进 AI 产品：每个结论可核验，每个版本有评测，每个想法可落地。',
+    introduction: '统计学硕士在读，3 段 AI 产品实习：在企业级平台 0→1 主导四模态大模型接入，搭建 RAG 投研 Agent 与知识库工具。想到就亲手做出来——本页 5 个项目全部开源，3 个已上线可体验。',
     tags: ['统计验证', 'AI 产品', '评测驱动'],
     contact: 'mgalforever@163.com',
     website: 'https://olivia-happy.github.io/janine-portfolio/',
