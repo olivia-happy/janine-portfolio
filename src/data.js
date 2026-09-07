@@ -100,14 +100,15 @@ export const portfolio = {
     {
       slug: 'flashsight',
       title: 'FlashSight—DRAM 产业情报自动预警',
+      github: 'https://github.com/olivia-happy/flashsight',
       visual: { kind: 'chip', label: 'INTEL ALERT', steps: ['官方信源', '归一评分', '人工复核', '预警留存'] },
       stages: {
         问题: '存储市场情报靠分析师手工盯源与经验判断，口径不一、无证据留痕。',
         判断: '聚合公开信源，用可解释规则评分 + 受控 LLM 转译 + 反馈闭环。',
         推进: '定义产业事件模型与 AI 边界，落地全栈骨架与反馈回路。',
-        结果: '骨架 + PRD 完成，等待接入真实价格/信源。'
+        结果: '全栈骨架 + PRD/设计文档已公开，待接入真实价格/信源。'
       },
-      metrics: ['PRD 完成', '可解释评分闭环'],
+      metrics: ['已公开仓库', '可解释评分闭环'],
       caseFile: {
         scope: 'DRAM 产业情报预警 · 面向存储企业战略团队',
         role: '产品定义 / 评分与反馈设计 / PRD',
@@ -133,23 +134,24 @@ export const portfolio = {
         ] },
         { id: 'result', label: '结果', type: 'metrics', items: [
           { value: '全栈骨架', label: '评分+反馈+前端闭环' },
-          { value: 'PRD', label: '产品/边界/评测文档完成' },
-          { value: '9/28', label: '真实数据与评测集接入' }
+          { value: 'PRD+设计', label: '产品/边界/架构文档齐' },
+          { value: '已公开', label: 'GitHub 仓库上线' }
         ] },
-        { id: 'reflection', label: '复盘', type: 'reflection', title: '行业产品的价值在"口径"而非"接口"。', body: '产业预警的核心不是抓取，而是把"多严重、对谁、何时上报"变成可复现、可审计的口径。' }
+        { id: 'reflection', label: '复盘', type: 'reflection', title: '行业产品的价值在"口径"而非"接口"。', body: '产业预警的核心不是抓取，而是把"多严重、对谁、何时上报"变成可复现、可审计的口径。下一步接真实价格与评测集，量化漏报率与前置时间。' }
       ]
     },
     {
       slug: 'atlasiq',
       title: 'AtlasIQ—新能源海外市场准入与尽调',
+      github: 'https://github.com/olivia-happy/atlasiq',
       visual: { kind: 'energy', label: 'MARKET INTAKE', steps: ['多源特征', '影响矩阵', '准入评估', '尽调流转'] },
       stages: {
         问题: '海外新能源市场评估依赖分散表格与个人经验，结论无法对到证据。',
         判断: '把"某国值不值得看"做成八因素影响矩阵 + 证据留痕的准入流程。',
         推进: '聚合免费公开数据源，落地准入/尽调/导出闭环。',
-        结果: 'MVP 本地开发中，README 含 3 分钟面试 Demo。'
+        结果: 'MVP + 完整文档已公开，含面试 Demo 讲法。'
       },
-      metrics: ['本地 MVP', '证据留痕准入'],
+      metrics: ['已公开仓库', '证据留痕准入'],
       caseFile: {
         scope: '新能源企业海外项目准入 · 多源特征仓',
         role: '产品定义 / 数据与证据模型 / MVP',
@@ -176,7 +178,7 @@ export const portfolio = {
         { id: 'result', label: '结果', type: 'metrics', items: [
           { value: '免费公开源', label: '零付费 API/云' },
           { value: 'observed/assumption', label: '证据状态区分' },
-          { value: 'MVP', label: '准入到简报可跑' }
+          { value: '已公开', label: '准入到简报闭环可跑' }
         ] },
         { id: 'reflection', label: '复盘', type: 'reflection', title: '行业调研产品的护城河是"证据口径"。', body: '面试价值在于证明：能把跨频、跨源、带不确定性的行业信息，整理成可推进的产品判断。' }
       ]
