@@ -1,15 +1,14 @@
-# AI 产品经理个人主页
+# 袁靓（Janine Yuan）· AI / 数据产品经理主页
 
-这是一个静态作品集网站。请将本文件夹完整复制到另一台电脑后使用。
+静态个人主页，展示 4 个可核验的技术项目 + 真实实习/竞赛经历。托管于 GitHub Pages：**https://olivia-happy.github.io/janine-portfolio/**
 
-## 本地打开
+## 本地查看
 
-1. 安装 Node.js（建议 18 或更高版本）。
-2. 在这个文件夹中打开终端。
-3. 运行 `npm start`。
-4. 在浏览器打开 `http://localhost:4173/`。
+```powershell
+npm start      # http://localhost:4173/
+```
 
-不需要安装第三方依赖，也不需要联网。
+无需第三方依赖，纯静态 HTML/CSS/JS。
 
 ## 修改内容
 
@@ -18,7 +17,20 @@
 - 交互：`src/app.js`
 - 视觉样式：`src/styles.css`
 
-案例可直接通过以下地址查看：
+## 案例直达
 
-- `http://localhost:4173/#case=knowledge-assistant`
-- `http://localhost:4173/#case=content-copilot`
+- EmbodiedOps 具身诊断：`#case=embodiedops`
+- MOBA Build Agent 出装助手：`#case=moba-build-agent`
+- FlashSight DRAM 情报：`#case=flashsight`
+- AtlasIQ 新能源准入：`#case=atlasiq`
+
+## 测试
+
+```powershell
+npm test        # node --test，覆盖数据完整性/渲染/路由
+```
+
+## 说明
+
+- 案例内容取自对应 GitHub 仓库的真实 README/PRD/案例页，指标不虚构。
+- 联系邮箱仅展示本人求职邮箱 mgalforever@163.com，不展示手机号。

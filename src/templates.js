@@ -8,21 +8,25 @@ export function escapeHtml(value) {
 }
 
 function renderProductUi(project, index) {
-  if (index === 0) {
-    return `<div class="product-ui knowledge-ui" aria-hidden="true">
-      <div class="ui-bar"><span>KNOWLEDGE DESK</span><i></i><i></i></div>
-      <div class="ui-search">如何申请跨部门权限？ <b>→</b></div>
-      <div class="ui-results"><div><span>01</span><strong>权限申请流程</strong><em>HR · 2026.04</em></div><div><span>02</span><strong>审批节点与时限</strong><em>IT · 2026.03</em></div><div><span>03</span><strong>例外处理说明</strong><em>Admin · 2026.01</em></div></div>
-      <div class="ui-trust"><span>3 sources cited</span><strong>可信回答</strong></div>
-    </div>`;
-  }
-  return `<div class="product-ui copilot-ui" aria-hidden="true">
-    <div class="ui-bar"><span>CONTENT COPILOT</span><i></i><i></i></div>
-    <div class="copilot-brief"><span>Campaign brief</span><strong>新品预热 · 社群触达</strong></div>
-    <div class="copilot-flow"><div>策略模板</div><i>→</i><div>AI 初稿</div><i>→</i><div>人工编辑</div></div>
-    <div class="copilot-cards"><span>目标人群</span><span>核心卖点</span><span>语气限制</span></div>
-    <div class="copilot-status"><b></b> Draft ready for review</div>
+  const kind = project.visual?.kind || 'generic';
+  const uiClass = `product-ui product-ui--${kind}`;
+  const steps = project.visual?.steps || [];
+  const stepRow = steps.map((step, stepIndex) => `<span>0${stepIndex + 1}</span><strong>${escapeHtml(step)}</strong>`).join('');
+  const [primaryMetric] = project.metrics || [];
+  return `<div class="${uiClass}" aria-hidden="true">
+    <div class="ui-bar"><span>${escapeHtml(project.visual?.label || 'CASE')}</span><i></i><i></i></div>
+    <div class="ui-flow">${stepRow}</div>
+    <div class="ui-metric"><small>KEY OUTCOME</small><strong>${escapeHtml(primaryMetric || '')}</strong></div>
+    <div class="ui-trust"><span>${escapeHtml(project.caseFile?.role || '')}</span><strong>证据可核验</strong></div>
   </div>`;
+}
+
+function renderProjectLinks(project) {
+  const links = [];
+  if (project.github) links.push(`<a class="project-link project-link--code" href="${escapeHtml(project.github)}" target="_blank" rel="noreferrer">查看代码 ↗</a>`);
+  if (project.demo) links.push(`<a class="project-link project-link--demo" href="${escapeHtml(project.demo)}" target="_blank" rel="noreferrer">在线 Demo ↗</a>`);
+  if (!links.length) return '';
+  return `<div class="project-links">${links.join('')}</div>`;
 }
 
 function renderProjectIndex(projects) {
@@ -32,7 +36,7 @@ function renderProjectIndex(projects) {
   const previews = projects.map((project, index) => {
     const [primaryMetric] = project.metrics;
     return `<article class="project-preview${index === 0 ? ' is-active' : ''}" id="project-preview-${index + 1}" data-project-preview="${index}" ${index ? 'hidden' : ''} aria-labelledby="project-preview-title-${index + 1}">
-      <div class="preview-copy"><p>SELECTED CASE / 0${index + 1}</p><h3 id="project-preview-title-${index + 1}">${escapeHtml(project.title)}</h3><p>${escapeHtml(project.caseFile.decision)}</p><dl><div><dt>ROLE</dt><dd>${escapeHtml(project.caseFile.role)}</dd></div><div><dt>OUTCOME</dt><dd>${escapeHtml(primaryMetric)}</dd></div></dl><button class="project-open" type="button" data-project-open="${escapeHtml(project.slug)}">阅读案例 <span aria-hidden="true">→</span></button></div>${renderProductUi(project, index)}</article>`;
+      <div class="preview-copy"><p>SELECTED CASE / 0${index + 1}</p><h3 id="project-preview-title-${index + 1}">${escapeHtml(project.title)}</h3><p>${escapeHtml(project.caseFile.decision)}</p><dl><div><dt>ROLE</dt><dd>${escapeHtml(project.caseFile.role)}</dd></div><div><dt>OUTCOME</dt><dd>${escapeHtml(primaryMetric)}</dd></div></dl><div class="preview-actions">${renderProjectLinks(project)}<button class="project-open" type="button" data-project-open="${escapeHtml(project.slug)}">阅读案例 <span aria-hidden="true">→</span></button></div></div>${renderProductUi(project, index)}</article>`;
   }).join('');
   return `<div class="project-index-gallery reveal"><div class="project-index-list"><p>WORK INDEX</p><ol>${controls}</ol><span>Hover / click to explore</span></div><div class="project-preview-stage">${previews}</div></div>`;
 }
@@ -47,7 +51,7 @@ function renderCaseSection(section) {
 function renderCaseReader(projects) {
   return `<section class="case-reader" data-case-reader hidden aria-live="polite">${projects.map((project, index) => `
     <article class="case-reader-project" data-case-reader-project="${escapeHtml(project.slug)}" ${index ? 'hidden' : ''}>
-      <header class="case-reader-hero"><a class="case-reader-back" href="#top">← 返回主页</a><p>CASE STUDY / 0${index + 1}</p><h1>${escapeHtml(project.title)}</h1><span>${escapeHtml(project.caseFile.scope)}</span></header>
+      <header class="case-reader-hero"><a class="case-reader-back" href="#top">← 返回主页</a><p>CASE STUDY / 0${index + 1}</p><h1>${escapeHtml(project.title)}</h1><span>${escapeHtml(project.caseFile.scope)}</span><div class="case-reader-links">${renderProjectLinks(project)}</div></header>
       <div class="case-reader-layout"><aside class="case-reader-toc" aria-label="案例目录"><p>CASE INDEX</p><ol>${project.caseSections.map((section, sectionIndex) => `<li><a href="#case=${escapeHtml(project.slug)}&section=${escapeHtml(section.id)}" data-case-reader-toc="${escapeHtml(section.id)}"><span>0${sectionIndex + 1}</span>${escapeHtml(section.label)}</a></li>`).join('')}</ol></aside><div class="case-reader-content">${project.caseSections.map((section, sectionIndex) => `<section class="case-section case-section--${escapeHtml(section.type)}" id="case-${escapeHtml(project.slug)}-${escapeHtml(section.id)}" data-case-reader-section="${escapeHtml(section.id)}"><p>0${sectionIndex + 1} / ${escapeHtml(section.label)}</p>${renderCaseSection(section)}</section>`).join('')}</div></div>
     </article>`).join('')}</section>`;
 }

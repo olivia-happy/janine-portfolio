@@ -140,6 +140,23 @@ h2 { max-width: 16ch; margin: 0; font: clamp(2.25rem, 4.3vw, 4.2rem)/1.1 var(--s
 .copilot-cards span { min-height: 4rem; padding: .65rem; color: var(--ink-soft); background: rgb(255 255 255 / 62%); font: .6rem var(--mono); }
 .copilot-status { position: absolute; right: 1rem; bottom: 1rem; left: 1rem; padding: .72rem; color: var(--ink-soft); background: #FFF; font: .62rem var(--mono); }
 .copilot-status b { display: inline-block; width: .42rem; height: .42rem; margin-right: .35rem; border-radius: 50%; background: var(--pink); }
+.product-ui--embodied { --ui-tilt: -2deg; background: linear-gradient(135deg, #EEF6FB, #DFEDF8); }
+.product-ui--game { --ui-tilt: 1.6deg; background: linear-gradient(135deg, #FBF3F7, #F3E7EF); }
+.product-ui--chip { --ui-tilt: -1.4deg; background: linear-gradient(135deg, #F3F7FC, #E6EFF9); }
+.product-ui--energy { --ui-tilt: 1.8deg; background: linear-gradient(135deg, #F6FBF3, #E9F4E3); }
+.ui-flow { display: grid; gap: .5rem; margin: 1.1rem 0 1.4rem; }
+.ui-flow span { color: var(--pink); font: .56rem var(--mono); }
+.ui-flow strong { display: block; margin-top: .12rem; color: var(--ink); font: .78rem var(--serif); font-weight: 500; }
+.ui-metric { position: absolute; left: 1rem; right: 1rem; bottom: 3.6rem; display: flex; align-items: baseline; justify-content: space-between; padding: .85rem 0; border-top: 1px dashed rgb(18 34 61 / 14%); }
+.ui-metric small { color: var(--blue); font: .56rem var(--mono); letter-spacing: .1em; }
+.ui-metric strong { color: var(--ink); font: 1.02rem var(--serif); font-weight: 500; }
+.preview-actions { display: flex; flex-wrap: wrap; gap: .6rem 1.1rem; align-items: center; margin-top: 1.4rem; }
+.project-links { display: flex; flex-wrap: wrap; gap: .5rem .9rem; }
+.project-link { color: var(--blue); font: .72rem var(--mono); text-decoration: none; border-bottom: 1px solid rgb(74 120 210 / 30%); transition: color .2s ease, border-color .2s ease; }
+.project-link:hover { border-color: var(--pink); color: var(--pink); }
+.project-link--demo { color: var(--pink); border-color: rgb(233 129 174 / 34%); }
+.case-reader-links { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 1.6rem; }
+.case-reader-links .project-link { font-size: .84rem; }
 .case-sheet { position: absolute; inset: 0; z-index: 4; padding: clamp(2rem, 5vw, 4.5rem); color: #FFF; background: linear-gradient(135deg, #162744, #304E85 55%, #A96089); animation: preview-enter .36s cubic-bezier(.22,.8,.22,1) both; }
 .case-sheet[hidden] { display: none; }
 .project-index-gallery.is-case-open .project-preview { filter: blur(5px); }
