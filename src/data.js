@@ -3,9 +3,9 @@ export const portfolio = {
   profile: {
     name: '袁靓',
     englishName: 'Janine Yuan',
-    role: 'AI / 数据产品经理',
-    thesis: '用统计学做验证，用产品语言做交付：让 AI 能力可衡量、可信、可落地。',
-    introduction: '统计学硕士在读。做过企业知识问答与投研 Agent、风控产品化与数据工具，理解模型评测、RAG 与 Agent 边界，也能把模糊需求推进成可交付的产品。',
+    role: 'AI 产品经理 · Agent 与数据智能方向',
+    thesis: '从业务问题到可上线的 AI 产品：用 Demo 快速验证，用评测体系证明价值。',
+    introduction: '统计学硕士在读：主导过四模态大模型接入、投研 RAG Agent 工作流与知识库工具，习惯用 AI Coding 亲手把想法做成可跑的 Demo——本页 5 个项目全部公开可核验，3 个已上线可体验。',
     tags: ['统计验证', 'AI 产品', '评测驱动'],
     contact: 'mgalforever@163.com',
     website: 'https://olivia-happy.github.io/janine-portfolio/',
@@ -235,16 +235,16 @@ export const portfolio = {
     }
   ],
   principles: [
-    { title: '问题定义', detail: '先确认用户要完成的任务，再讨论功能形态；用数据验证问题存在。' },
-    { title: '能力边界', detail: '明确 AI 能做什么、不能替代什么、何时必须人工判断；fail-closed 优于编造。' },
-    { title: '验证指标', detail: '把评测集、成本账、人工接受率做成可复现口径，而不是只报模型分数。' },
-    { title: '协同推进', detail: '把业务语言转译成产品与评测口径，让研发、业务、测试讲同一套话。' }
+    { title: '问题定义', detail: '从业务目标而非功能需求出发，主动发现高价值问题，用数据确认它值得解决。' },
+    { title: '能力边界', detail: '对模型能力边界有基本判断：AI 做什么、人判断什么；fail-closed 优于幻觉编造。' },
+    { title: '验证指标', detail: '区分模型指标、产品指标与业务指标，用评测集、采纳率与成本账形成验证闭环。' },
+    { title: '协同推进', detail: '以 Owner 意识推动跨团队落地，让算法、研发、业务、售前讲同一套评测口径。' }
   ],
   internships: [
-    { period: '2026', title: '心动网络（XD.com） · AI 产品实习生', detail: '主导 MIVO Web 视频/音频/图像/3D 四模态 6 款模型接入，交付 6 份 PRD 与高保真原型，沉淀"官方事实与待确认项分离"的接入规范；从 0 定义计费规则配置与用量核算引擎，推动空账期数据口径矛盾闭环；独立交付 OA 审批外部人员管理产品与 469 条历史数据回录；自研飞书知识库 Git 镜像工具并稳定同步 299 篇文档。', focus: '模型接入产品化 · B 端 0→1 交付', handoff: '把"官方事实与待确认项分离"与核算口径意识带进后续每个项目。' },
-    { period: '2025', title: '法雷奥（Valeo） · AI 数据产品经理', detail: '搭建基于 Wind Agent + Gemini 的投研自动化工流；RAG 降幻觉、Prompt 迭代 20+ 版，单份研报周期缩短 60%。', focus: 'AIGC 工作流与 RAG 评测', handoff: '把评测集与成本账带进 AI 产品方法。' },
-    { period: '2024', title: '特赞（Tezign） · AI 产品经理', detail: '风控模块产品定义与商业化路线图；6 款头部竞品矩阵 + 技术成熟度评估，A/B 测试与交叉验证优化风控规则。', focus: '产品定义与 A/B 验证', handoff: '把"调研-实验-迭代"做成可复用流程。' },
-    { period: '2021', title: '中国平安 · 数据产品经理', detail: '内部工具产品化，覆盖 120+ 员工；VOC 洞察落地 3 项策略，核心团队单月转化率提升 15%。', focus: '数据工具与业务赋能', handoff: '用数据口径驱动业务决策。' }
+    { period: '2026', title: '心动网络（XD.com） · AI 产品实习生', detail: '在企业级 AI 平台做 0→1：主导 Web 端视频/音频/图像/3D 四模态 6 款大模型接入，交付 6 份 PRD 与高保真原型，沉淀可复用的模型接入规范；从 0 定义计费规则与用量核算引擎，推动空账期数据口径矛盾闭环；自研飞书知识库 Git 镜像工具稳定同步 299 篇文档；独立交付 OA 审批外部人员管理产品与 469 条历史数据回录。', focus: '模型接入产品化 · B 端 0→1 交付', handoff: '把"官方事实与待确认项分离"与核算口径意识带进后续每个项目。' },
+    { period: '2025', title: '法雷奥（Valeo） · AI 数据产品经理', detail: '基于 Wind Agent + Gemini 搭建投研自动化 Agent 工作流：Workflow 编排 + RAG 降幻觉，Prompt 迭代 20+ 版，单份研报周期缩短 60%。', focus: 'AIGC 工作流与 RAG 评测', handoff: '把评测集与成本账带进 AI 产品方法。' },
+    { period: '2024', title: '特赞（Tezign） · AI 产品经理', detail: '主导风控模块产品定义与商业化路线图：6 款头部竞品矩阵 + 技术成熟度评估，A/B 测试与交叉验证持续优化风控规则。', focus: '产品定义与 A/B 验证', handoff: '把"调研-实验-迭代"做成可复用流程。' },
+    { period: '2021', title: '中国平安 · 数据产品经理', detail: '从 VOC 用户原声里挖掘高价值问题并产品化：内部工具覆盖 120+ 员工，洞察落地 3 项策略，核心团队单月转化率提升 15%。', focus: '数据工具与业务赋能', handoff: '用数据口径驱动业务决策。' }
   ],
   campusExperiences: [
     { period: '2025', title: '数据要素大赛 · 全国一等奖', detail: '基金公告智能分析系统：OCR+BERT 混合方案，核心字段准确率 96%，单份耗时 3h→5min。', focus: '业务建模与评测', handoff: '字段提取 SOP + Prompt 交叉验证方法论。' },

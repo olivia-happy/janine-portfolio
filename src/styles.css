@@ -131,7 +131,6 @@ h1 span { display: block; margin-top: 1rem; color: var(--ink-soft); font: .76rem
 .hero-flower-stage::before, .hero-flower-stage::after { position: absolute; content: ""; border-radius: 50%; filter: blur(10px); }
 .hero-flower-stage::before { top: 8%; right: 10%; width: 40%; aspect-ratio: 1; background: rgb(116 171 224 / 30%); }
 .hero-flower-stage::after { bottom: 9%; left: 11%; width: 37%; aspect-ratio: 1; background: rgb(233 129 174 / 24%); }
-.hero-flower-stage > p { position: absolute; top: 1.5rem; left: 1.7rem; z-index: 3; margin: 0; color: var(--ink-soft); font: .7rem var(--mono); letter-spacing: .12em; }
 .flower-bloom { position: absolute; top: 49%; left: 53%; z-index: 2; width: min(23rem, 80%); aspect-ratio: 1; transform: translate(calc(-50% + var(--flower-x, 0px)), calc(-50% + var(--bloom-lift, 0px) + var(--flower-y, 0px))) rotate(calc(var(--bloom-tilt, 0deg) + var(--flower-tilt, 0deg))); transition: transform .2s ease-out; }
 .flower-bloom::before { position: absolute; inset: 22%; content: ""; border: 1px solid var(--blue-soft); border-radius: 50%; box-shadow: 0 0 0 2rem var(--pink-soft), 0 0 0 5rem var(--blue-soft); animation: bloom-breathe 8s ease-in-out infinite; }
 .flower-bloom b { position: absolute; top: 50%; left: 50%; width: 20%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle at 38% 35%, #FFF, #F5CD81 35%, #D6925A 100%); box-shadow: 0 0 2.8rem rgb(241 193 112 / 36%); transform: translate(-50%, -50%); }
