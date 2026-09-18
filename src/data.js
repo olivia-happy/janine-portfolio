@@ -4,12 +4,36 @@ export const portfolio = {
     englishName: 'Janine Yuan',
     role: 'AI 产品经理 · Agent 与数据智能方向',
     thesis: '把统计学的严谨带进 AI 产品：每个结论可核验，每个版本有评测，每个想法可落地。',
-    introduction: '统计学硕士在读，3 段 AI 产品实习：在企业级平台 0→1 主导四模态大模型接入，搭建 RAG 投研 Agent 与知识库工具。想到就亲手做出来——本页 5 个项目全部开源，3 个已上线可体验。',
+    introduction: '统计学硕士在读，3 段 AI 产品实习：在企业级平台 0→1 主导四模态大模型接入，搭建 RAG 投研 Agent 与知识库工具。想到就亲手做出来——本页 5 个项目全部开源、均附 PRD 与评测报告，其中 MOBA 提供在线 H5 可体验。',
     tags: ['统计验证', 'AI 产品', '评测驱动'],
     contact: 'mgalforever@163.com',
+    availability: '2027.07 可全职入职 · 2026.10 起可提前实习 · 期望城市：上海 / 北京 / 杭州',
     website: 'https://olivia-happy.github.io/janine-portfolio/',
     github: 'https://github.com/olivia-happy'
   },
+  education: [
+    {
+      period: '2024.09 — 2027.06',
+      school: '上海工程技术大学',
+      faculty: '数理与统计学院',
+      degree: '统计学 · 学术硕士',
+      status: '在读 · 2027 届',
+      courses: ['多元统计分析', '时间序列分析', '高级计量经济学', '数据挖掘与机器学习', '高级数据库技术']
+    },
+    {
+      period: '2017.09 — 2021.06',
+      school: '安徽工业大学',
+      faculty: '商学院',
+      degree: '金融学 · 学士',
+      status: '已毕业',
+      courses: ['金融工程', '公司金融', '投资学', '计量经济学'],
+      highlight: '大一就读信息与计算科学（数学类），大二转入金融学——数学、金融、统计三段复合，是理解数据口径与业务指标的基础。'
+    }
+  ],
+  honors: [
+    { label: '奖学金', title: '连续三年获校级奖学金', note: '本科在读期间' },
+    { label: '学生工作', title: '2024-2025 学年校级团干部典型示范', note: '班级宣传委员' }
+  ],
   projects: [
     {
       slug: 'embodiedops',
@@ -19,9 +43,9 @@ export const portfolio = {
         问题: '机器人任务失败只记 success/fail，无法回答失败在哪一阶段、证据是什么。',
         判断: '把失败拆成可追溯的 episode + 受控 Agent + 证据校验闭环，fail-closed 拒答。',
         推进: '定义数据契约与 AI 边界，协同研发落地前端与评测门禁。',
-        结果: '公开上线，README 嵌截图，PRD/评测/安全测试齐全。'
+        结果: '已开源，README 嵌截图，PRD/评测/安全测试齐全。'
       },
-      metrics: ['已公开上线', '证据级诊断闭环'],
+      metrics: ['已开源', '证据级诊断闭环'],
       github: 'https://github.com/olivia-happy/embodiedops',
       caseFile: {
         scope: '机器人任务失败诊断 · 本地只读工作台',
@@ -65,7 +89,7 @@ export const portfolio = {
         推进: 'Android 端识别 + FastAPI 规则引擎，含紧急秒换与证据链。',
         结果: '已上线 GitHub + 在线 H5 Demo，双端测试全绿。'
       },
-      metrics: ['已上线', '识别→确认→建议闭环'],
+      metrics: ['已开源 · 在线可体验', '识别→确认→建议闭环'],
       github: 'https://github.com/olivia-happy/moba-build-agent',
       demo: 'https://olivia-happy.github.io/moba-build-agent/',
       caseFile: {
@@ -196,9 +220,9 @@ export const portfolio = {
         问题: '旅行攻略信息分散，用户出发前真正纠结的是预约、路线与预算能否执行。',
         判断: '不做泛旅行助手，聚焦国内城市执行型规划：预约可靠性优先、可执行路线、可控生成。',
         推进: '用小红书证据前置预约风险，结构化输出结果页，叠加锁定/移除/再优化行程编辑。',
-        结果: '可运行可演示的 V1 已公开上线，含中英双语、明暗主题与展示页。'
+        结果: '可运行可演示的 V1 已开源，含中英双语、明暗主题与展示页。'
       },
-      metrics: ['已公开上线', '预约风险前置'],
+      metrics: ['已开源', '预约风险前置'],
       github: 'https://github.com/olivia-happy/visitors',
       caseFile: {
         scope: '国内城市旅行 · 执行型智能行程规划器',
@@ -240,14 +264,14 @@ export const portfolio = {
     { title: '协同推进', detail: '以 Owner 意识推动跨团队落地，让算法、研发、业务、售前讲同一套评测口径。' }
   ],
   internships: [
-    { period: '2026', title: '心动网络（XD.com） · AI 产品实习生', detail: '在企业级 AI 平台做 0→1：主导 Web 端视频/音频/图像/3D 四模态 6 款大模型接入，交付 6 份 PRD 与高保真原型，沉淀可复用的模型接入规范；从 0 定义计费规则与用量核算引擎，推动空账期数据口径矛盾闭环；自研飞书知识库 Git 镜像工具稳定同步 299 篇文档；独立交付 OA 审批外部人员管理产品与 469 条历史数据回录。', focus: '模型接入产品化 · B 端 0→1 交付', handoff: '把"官方事实与待确认项分离"与核算口径意识带进后续每个项目。' },
-    { period: '2025', title: '法雷奥（Valeo） · AI 数据产品经理', detail: '基于 Wind Agent + Gemini 搭建投研自动化 Agent 工作流：Workflow 编排 + RAG 降幻觉，Prompt 迭代 20+ 版，单份研报周期缩短 60%。', focus: 'AIGC 工作流与 RAG 评测', handoff: '把评测集与成本账带进 AI 产品方法。' },
-    { period: '2024', title: '特赞（Tezign） · AI 产品经理', detail: '主导风控模块产品定义与商业化路线图：6 款头部竞品矩阵 + 技术成熟度评估，A/B 测试与交叉验证持续优化风控规则。', focus: '产品定义与 A/B 验证', handoff: '把"调研-实验-迭代"做成可复用流程。' },
-    { period: '2021', title: '中国平安 · 数据产品经理', detail: '从 VOC 用户原声里挖掘高价值问题并产品化：内部工具覆盖 120+ 员工，洞察落地 3 项策略，核心团队单月转化率提升 15%。', focus: '数据工具与业务赋能', handoff: '用数据口径驱动业务决策。' }
+    { period: '2026', range: '2026.05 — 2026.09', title: '心动网络（XD.com） · AI 产品经理', detail: '在企业级 AI 平台做 0→1：主导 Web 端视频/音频/图像/3D 四模态 6 款大模型接入，交付 6 份 PRD、API 对照表与高保真原型，沉淀可复用的模型接入规范；从 0 定义计费规则与用量核算引擎，统一 Token / 按次 / 套餐三类口径；独立交付 OA 审批外部人员管理产品，主导 469 条历史数据回录。', focus: '模型接入产品化 · B 端 0→1 交付', handoff: '把「官方事实与待确认项分离」与核算口径意识带进后续每个项目。' },
+    { period: '2025', range: '2025.09 — 2026.03', title: '法雷奥（Valeo） · AI 数据产品经理', detail: '基于 Wind 金融数据终端 + Gemini 搭建投研自动化工作流：Workflow 编排 + RAG 降幻觉，Prompt 迭代 20+ 版，单份研报周期缩短 60%；梳理 Bosch、NVIDIA 等 30+ 企业在华投资并购动态，搭建赛道财务模型（核心指标抽样对齐准确率 98%）。', focus: 'AIGC 工作流与 RAG 评测', handoff: '把评测集与成本账带进 AI 产品方法。' },
+    { period: '2024', range: '2024.04 — 2024.08', title: '特赞（Tezign） · 产品经理', detail: '主导创意内容平台的产品定义与商业化路线图：6 款头部竞品功能矩阵 + 技术成熟度评估；清洗 10+ 家客户使用日志，用 A/B 测试与交叉验证持续优化内容审核规则，支撑 3 家品牌客户完成技术方案初筛与 POC 沟通。', focus: '产品定义与 A/B 验证', handoff: '把「调研-实验-迭代」做成可复用流程。' },
+    { period: '2021', range: '2021.06 — 2023.08', title: '中国平安 · 数据分析（全职）', detail: '以投保人为研究对象搭建「咨询→报价→签单」转化漏斗，梳理 100+ 份客户 VOC 定位各环节流失主因，推动 3 项流程优化落地——试点组转化率由 25% 提升至 40%，单月新增保单 120 单；为 120+ 一线业务员设计数据处理 MVP，核心用户 NPS 达 93。', focus: '数据工具与业务赋能', handoff: '用数据口径驱动业务决策。' }
   ],
   campusExperiences: [
-    { period: '2025', title: '数据要素大赛 · 全国一等奖', detail: '基金公告智能分析系统：OCR+BERT 混合方案，核心字段准确率 96%，单份耗时 3h→5min。', focus: '业务建模与评测', handoff: '字段提取 SOP + Prompt 交叉验证方法论。' },
-    { period: '2025', title: '华为杯数学建模 · 全国二等奖', detail: '轴承振动信号故障预测：小波去噪 + 6 模型对比 + 5-fold 交叉验证，外圈故障预测准确率 90%。', focus: '特征工程与建模', handoff: '把模型能力讲成产品可验证的指标。' },
-    { period: '2025', title: '正大杯市场调查 · 全国三等奖', detail: '《哪吒 2》IP 社交生态探索：K-Means 用户画像 + Logistic 预测，核心客群触达率提升 22%。', focus: '用户研究与增长', handoff: '从用户洞察到可运营的玩法方案。' }
+    { period: '2025', range: '2025.11', title: '第二届全国大学生数据要素素质大赛 · 全国一等奖（十佳作品）', detail: '基金公告智能分析系统：定义 10 类核心字段提取 SOP，协调落地 OCR + BERT 混合方案，以 1000 只基金为样本做 Prompt 迭代与交叉验证，核心字段准确率 96%，单份公告处理从 3 小时降至 5 分钟。', focus: '业务建模与评测', handoff: '字段提取 SOP + Prompt 交叉验证方法论。' },
+    { period: '2024', range: '2024 — 2025', title: '「华为杯」中国研究生数学建模竞赛 · 全国二等奖（连续两届获奖）', detail: '工业设备预测性维护场景：小波去噪 + ReliefF 降维，6 类模型对比与 5-fold 交叉验证，改进多核 SSTCA 将域偏移 MMD 降低 60%，故障预测准确率 90%；第二十一届获全国三等奖、第二十二届获全国二等奖。', focus: '特征工程与建模', handoff: '把模型能力讲成产品可验证的指标。' },
+    { period: '2025', range: '2025.05', title: '第十五届正大杯市场调查与分析大赛 · 全国三等奖', detail: '《哪吒 2》IP 社交生态研究：清洗 150+ 用户数据，用 K-Means 分层客群 + Logistic 预测购买概率，设计「先种草再推品」玩法，核心客群触达率提升 22%。', focus: '用户研究与增长', handoff: '从用户洞察到可运营的玩法方案。' }
   ]
 };

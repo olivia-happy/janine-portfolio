@@ -42,8 +42,8 @@ function initFlowerBloom() {
 
   let frameId = null;
   function drift(time) {
-    bloom.style.setProperty('--bloom-tilt', `${Math.sin(time * .00018) * 2.2}deg`);
-    bloom.style.setProperty('--bloom-lift', `${Math.sin(time * .00027) * 8}px`);
+    flowerStage.style.setProperty('--bloom-tilt', `${Math.sin(time * .00018) * 2.2}deg`);
+    flowerStage.style.setProperty('--bloom-lift', `${Math.sin(time * .00027) * 8}px`);
     frameId = window.requestAnimationFrame(drift);
   }
 
@@ -52,12 +52,12 @@ function initFlowerBloom() {
     const bounds = flowerStage.getBoundingClientRect();
     const x = (event.clientX - bounds.left) / bounds.width - .5;
     const y = (event.clientY - bounds.top) / bounds.height - .5;
-    bloom.style.setProperty('--flower-x', `${x * 16}px`);
-    bloom.style.setProperty('--flower-y', `${y * 16}px`);
-    bloom.style.setProperty('--flower-tilt', `${x * 3}deg`);
+    flowerStage.style.setProperty('--flower-x', `${x * 16}px`);
+    flowerStage.style.setProperty('--flower-y', `${y * 16}px`);
+    flowerStage.style.setProperty('--flower-tilt', `${x * 3}deg`);
   });
   flowerStage.addEventListener('pointerleave', () => {
-    ['--flower-x', '--flower-y', '--flower-tilt'].forEach((property) => bloom.style.removeProperty(property));
+    ['--flower-x', '--flower-y', '--flower-tilt'].forEach((property) => flowerStage.style.removeProperty(property));
   });
   reduceMotion.addEventListener('change', (event) => {
     if (event.matches && frameId !== null) window.cancelAnimationFrame(frameId);
